@@ -47,11 +47,9 @@ services:
       context: ./php-fpm
       args:
         - CHANGE_SOURCE=true
-        - BASE_IMAGE_TAG_PREFIX=latest
         - PHP_VERSION=8.1
         - PUID=1000
         - PGID=1000
-        - LOCALE=POSIX
         - http_proxy
         - https_proxy
         - no_proxy
@@ -61,15 +59,7 @@ services:
     ports:
       - "9003:9003"
     expose:
-      - "9000"
-    extra_hosts:
-      - "dockerhost:10.0.75.1"
-    environment:
-      - DOCKER_HOST=tcp://docker-in-docker:2376
-      - DOCKER_TLS_VERIFY=1
-      - DOCKER_TLS_CERTDIR=/certs
-      - DOCKER_CERT_PATH=/certs/client
-      - FAKETIME=-0
+      - "9000"  
     networks:
       - backend
   redis:
