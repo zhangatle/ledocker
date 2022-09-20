@@ -16,9 +16,8 @@ services:
       - ./nginx/sites/:/etc/nginx/sites-available
       - ./nginx/ssl/:/etc/nginx/ssl
     ports:
-      - "80:80"
+      - "81:80"
       - "443:443"
-      - "81:81"
     depends_on:
       - php-fpm
     networks:
@@ -39,7 +38,7 @@ services:
       - ~/.ledocker/data/mysql:/var/lib/mysql
       - ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     ports:
-      - "3306:3306"
+      - "33066:3306"
     networks:
       - backend
   php-fpm:
@@ -61,8 +60,6 @@ services:
     volumes:
       - ./php-fpm/php8.1.ini:/usr/local/etc/php/php.ini
       - ../PhpstormProjects:/var/www:cached
-    ports:
-      - "9003:9003"
     expose:
       - "9000"  
     networks:
@@ -73,7 +70,7 @@ services:
       - ~/.ledocker/data/redis:/data
     command: --requirepass ledocker
     ports:
-      - "6379:6379"
+      - "63799:6379"
     networks:
       - backend
 networks:
