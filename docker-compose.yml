@@ -48,6 +48,11 @@ services:
       args:
         - CHANGE_SOURCE=true
         - PHP_VERSION=8.1
+        - INSTALL_PHPREDIS=true
+        - INSTALL_SWOOLE=false
+        - INSTALL_AMQP=true
+        - INSTALL_MONGO=true
+        - INSTALL_INTL=true
         - PUID=1000
         - PGID=1000
         - http_proxy
@@ -75,7 +80,7 @@ networks:
   frontend:
     # driver: bridge
   backend:
-    # driver: bridge
+    driver: bridge
 volumes:
   mysql:
     driver: locale
