@@ -26,6 +26,7 @@ RUN set -xe; \
     pecl channel-update pecl.php.net && \
     apt-get install -yqq apt-utils gnupg2 git libzip-dev unzip zip && \
     docker-php-ext-configure zip && docker-php-ext-install zip && \
+    docker-php-ext-install pdo_mysql && \
     php -m | grep -q 'zlib'
 
 ###########################################################################
